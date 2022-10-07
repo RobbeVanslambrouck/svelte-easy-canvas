@@ -9,23 +9,35 @@
   let props;
 
   let key = Symbol();
-  let canvasObjects = [];
+  let canvasEntities = [];
   let animationFrame;
 
-  setContext(key, canvasObjects);
+  setContext(key, {
+    addEntity(entity) {
+      canvasEntities.push(entity);
+    },
+    removeEntity(entity) {
+      const index = canvasEntities.indexOf(entity);
+      canvasEntities.splice(index, 1);
+    },
+  });
 
   onMount(() => {
     context = canvas.getContext("2d");
-    props = { context, test: "test" };
+    props = { context };
+    renderLoop();
   });
 
   function renderLoop() {
     animationFrame = requestAnimationFrame(renderLoop);
+    canvasEntities.forEach((entity) => {
+      entity.draw(props);
+    });
   }
 </script>
 
 <canvas bind:this={canvas} {width} {height}>
-  <slot {props} />
+  <slot {key} />
 </canvas>
 
 <style>

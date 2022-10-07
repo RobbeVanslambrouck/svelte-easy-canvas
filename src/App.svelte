@@ -7,8 +7,9 @@
 </script>
 
 <svelte:window bind:innerWidth bind:innerHeight />
-<Canvas let:props={cp} width={innerWidth} height={innerHeight}>
-  <Triangle props={cp} />
+<Canvas let:key width={innerWidth} height={innerHeight}>
+  <Triangle {key} />
+  <Triangle {key} x={100} y={100} />
 </Canvas>
 
 <style>
