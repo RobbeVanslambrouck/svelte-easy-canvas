@@ -1,7 +1,7 @@
 import { getContext } from "svelte";
 
-export const draw = (fn, key) => {
-  const canvasContext = getContext(key);
+export const draw = (fn) => {
+  const canvasContext = getContext("easy-canvas");
   const entity = {};
   entity.draw = fn;
   canvasContext.addEntity(entity);

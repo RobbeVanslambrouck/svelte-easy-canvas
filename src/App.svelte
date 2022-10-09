@@ -1,4 +1,5 @@
 <script>
+  import Ball from "./lib/Ball.svelte";
   import Canvas from "./lib/Canvas.svelte";
   import Triangle from "./lib/Triangle.svelte";
 
@@ -7,9 +8,9 @@
 </script>
 
 <svelte:window bind:innerWidth bind:innerHeight />
-<Canvas let:key width={innerWidth} height={innerHeight}>
-  <Triangle {key} />
-  <Triangle {key} x={100} y={100} />
+<Canvas width={innerWidth} height={innerHeight}>
+  <Ball x={innerWidth / 2} y={innerHeight / 2} />
+  <Triangle x={innerWidth / 2} y={innerHeight / 2} />
 </Canvas>
 
 <style>
