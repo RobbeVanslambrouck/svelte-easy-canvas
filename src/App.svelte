@@ -1,16 +1,14 @@
 <script>
-  import Ball from "./lib/Ball.svelte";
   import Canvas from "./lib/Canvas.svelte";
-  import Triangle from "./lib/Triangle.svelte";
+  import Stars from "./lib/Stars.svelte";
 
   let innerWidth;
   let innerHeight;
 </script>
 
 <svelte:window bind:innerWidth bind:innerHeight />
-<Canvas width={innerWidth} height={innerHeight}>
-  <Ball x={innerWidth / 2} y={innerHeight / 2} />
-  <Triangle x={innerWidth / 2} y={innerHeight / 2} />
+<Canvas width={innerWidth} height={innerHeight} backgroundColor="black">
+  <Stars />
 </Canvas>
 
 <style>
