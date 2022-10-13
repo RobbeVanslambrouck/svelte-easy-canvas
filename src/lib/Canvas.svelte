@@ -40,10 +40,14 @@
     context.fillRect(0, 0, width, height);
     props = { context, dt, width, height };
     canvasEntities.forEach((entity) => {
-      if (entity.mounted && entity.draw) {
-        context.save();
-        entity.draw(props);
-        context.restore();
+      try {
+        if (entity.mounted && entity.draw) {
+          context.save();
+          entity.draw(props);
+          context.restore();
+        }
+      } catch (error) {
+        console.log(error);
       }
     });
   }
